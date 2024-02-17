@@ -28,8 +28,13 @@
     font-weight: bold;
     display: flex;
     align-items: center;
+    transition: background-color 0.1s;
 }
 
-.taskForm button svg {
+.taskForm button[type=submit] svg {
     margin-left: 0.25rem;
+}
+
+.taskForm button[type=submit]:hover {
+    background: var(--blue)
 }
