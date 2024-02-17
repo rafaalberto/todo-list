@@ -1,8 +1,11 @@
+import { Header } from './components/Header'
+
 import './global.css'
 
 export function App() {
-
   return (
-    <h2>ToDo List</h2>
+    <div>
+      <Header />
+    </div>
   )
 }
