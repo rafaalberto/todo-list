@@ -1,0 +1,21 @@
+.emptyTask {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.emptyTask img {
+    height: 4rem;
+    margin: 1rem;
+}
+
+.emptyTask strong {
+    color: var(--gray-300);
+    line-height: 1.6;
+}
+
+.emptyTask span {
+    color: var(--gray-300);
+    line-height: 1.6;
+}
