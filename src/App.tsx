@@ -1,7 +1,6 @@
 import { Header } from './components/Header'
-import { NewTask } from './components/NewTask'
-import { TaskItem } from './components/TaskItem'
-import { Tasks } from './components/Tasks'
+import { InsertTask } from './components/task/InsertTask'
+import { TaskList } from './components/task/TaskList'
 
 import styles from './App.module.css'
 import './global.css'
@@ -11,9 +10,8 @@ export function App() {
     <div>
       <Header />
       <div className={styles.wrapper}>
-        <NewTask />
-        <Tasks />
-        <TaskItem />
+        <InsertTask />
+        <TaskList />
       </div>
     </div>
   )

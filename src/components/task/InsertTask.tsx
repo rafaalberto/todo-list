@@ -1,7 +1,7 @@
 import { PlusCircle } from '@phosphor-icons/react'
-import styles from './NewTask.module.css'
+import styles from './InsertTask.module.css'
 
-export function NewTask() {
+export function InsertTask() {
     return (
         <div>
             <form className={styles.taskForm}>

@@ -1,4 +1,4 @@
-.taskContent {
+.taskItemContent {
  display: flex;
  flex: 1;
  gap: 0.75rem;
@@ -13,14 +13,18 @@
  border: 1px solid var(--gray-400);
 }
 
-.taskContent label {
+.taskItemContent + .taskItemContent {
+    margin-top: 0.7rem;
+}
+
+.taskItemContent label {
     display: flex;
     padding: 3px;
     align-items: center;
     gap: 0.75rem;
 }
 
-.taskContent input[type="checkbox"] {
+.taskItemContent input[type="checkbox"] {
    display: none;
 }
 
@@ -54,13 +58,13 @@
     background-color: var(--purple);
 }
 
-.taskContent p {
+.taskItemContent p {
     font-size: 0.875rem;
     line-height: 140%;
     user-select: none;
 }
 
-.taskContent button {
+.taskItemContent button {
     background: transparent;
     border: 0;
     color: var(--gray-300);
@@ -69,6 +73,6 @@
     border-radius: 4px;
 }
 
-.taskContent button:hover {
+.taskItemContent button:hover {
     color: var(--blue);
 }
