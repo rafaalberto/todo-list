@@ -7,11 +7,11 @@ export function Tasks() {
             <header className={styles.infoTask}>
                 <aside>
                     <strong>Tarefas criadas</strong>
-                    <span>0</span>
+                    <span>5</span>
                 </aside>
                 <aside>
                     <strong>Concluídas</strong>
-                    <span>0</span>
+                    <span>2 de 5</span>
                 </aside>
             </header>
             <div className={styles.emptyTask}>

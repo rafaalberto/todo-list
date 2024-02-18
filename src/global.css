@@ -23,7 +23,7 @@
 
 :focus {
     outline: transparent;
-    box-shadow: 0 0 0 2px var(--gray-200);
+    box-shadow: 0 0 0 1px var(--purple);
 }
 
 body {
@@ -36,4 +36,8 @@ body, input, textarea, button {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 1rem;
+}
+
+input:focus {
+    color: var(--gray-100);
 }
