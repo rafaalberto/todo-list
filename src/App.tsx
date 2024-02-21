@@ -1,6 +1,5 @@
 import { Header } from './components/Header'
-import { InsertTask } from './components/task/InsertTask'
-import { TaskList } from './components/task/TaskList'
+import { Task } from './components/task/Task'
 
 import styles from './App.module.css'
 import './global.css'
@@ -10,8 +9,7 @@ export function App() {
     <div>
       <Header />
       <div className={styles.wrapper}>
-        <InsertTask />
-        <TaskList />
+        <Task />
       </div>
     </div>
   )

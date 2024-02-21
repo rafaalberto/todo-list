@@ -1,9 +1,8 @@
-.taskList {
+.task {
     border-radius: 8px;
-    margin-top: 2.5rem;
 }
 
-.taskListHeader {
+.taskHeader {
     padding: 1rem 0;
 }
 
@@ -12,6 +11,7 @@
     flex: 1;
     align-items: center;
     justify-content: space-between;
+    margin-top: 3rem;
 }
 
 .infoTask aside:first-child {

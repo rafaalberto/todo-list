@@ -1,17 +1,19 @@
 
 import { EmptyTask } from './EmptyTask'
+import { InsertTask } from './InsertTask'
 import { TaskItem } from './TaskItem'
-import styles from './TaskList.module.css'
 
-interface Task {
+import styles from './Task.module.css'
+
+interface ITask {
     id: number,
     text: string,
     isChecked: boolean
 }
 
-export function TaskList() {
+export function Task() {
     
-    const tasks: Task[] = [
+    const tasks: ITask[] = [
         {id: 1, text: "Aprender ReactJS", isChecked: false},
         {id: 2, text: "Estudar Typescript", isChecked: true},
         {id: 3, text: "Ler livro sobre arquitetura de software", isChecked: true},
@@ -21,7 +23,8 @@ export function TaskList() {
     const checkedTasks: number = tasks.filter(task => (task.isChecked)).length
 
     return (
-        <article className={styles.taskList}>
+        <article className={styles.task}>
+            <InsertTask />
             <header className={styles.infoTask}>
                 <aside>
                     <strong>Tarefas criadas</strong>
@@ -32,7 +35,7 @@ export function TaskList() {
                     <span>{`${checkedTasks} de ${tasksCounter}`}</span>
                 </aside>
             </header>
-            <div className={styles.taskListHeader}>
+            <div className={styles.taskHeader}>
                 {tasks.length > 0 ? (
                     tasks.map(task => {
                         return (
