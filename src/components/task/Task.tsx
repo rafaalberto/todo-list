@@ -1,48 +1,58 @@
 
 import { EmptyTask } from './EmptyTask'
 import { InsertTask } from './InsertTask'
+import { TaskHeader } from './TaskHeader'
 import { TaskItem } from './TaskItem'
 
+import { useState } from 'react'
 import styles from './Task.module.css'
 
-interface ITask {
+export interface ITask {
     id: number,
     text: string,
     isChecked: boolean
 }
 
 export function Task() {
-    
-    const tasks: ITask[] = [
-        {id: 1, text: "Aprender ReactJS", isChecked: false},
-        {id: 2, text: "Estudar Typescript", isChecked: true},
-        {id: 3, text: "Ler livro sobre arquitetura de software", isChecked: true},
-    ]
-    
+
+    const [tasks, setTasks] = useState<ITask[]>([])
+
     const tasksCounter: number = tasks.length
     const checkedTasks: number = tasks.filter(task => (task.isChecked)).length
 
+    function insertNewTask(text: string) {
+        const newTask: ITask = {
+            id: new Date().getTime(),
+            text: text,
+            isChecked: false
+        }
+        setTasks((state) => [...state, newTask])
+    }
+
+    function deleteTask(id: number) {
+        const filteredTasks = tasks.filter(task => {
+            return task.id !== id
+        })
+        setTasks(filteredTasks)
+    }
+
     return (
         <article className={styles.task}>
-            <InsertTask />
-            <header className={styles.infoTask}>
-                <aside>
-                    <strong>Tarefas criadas</strong>
-                    <span>{tasksCounter}</span>
-                </aside>
-                <aside>
-                    <strong>Concluídas</strong>
-                    <span>{`${checkedTasks} de ${tasksCounter}`}</span>
-                </aside>
-            </header>
-            <div className={styles.taskHeader}>
+            <InsertTask
+                onInsertTask={insertNewTask}
+            />
+            <TaskHeader
+                tasksCounter={tasksCounter}
+                checkedTasks={checkedTasks}
+            />
+            <div className={styles.taskList}>
                 {tasks.length > 0 ? (
                     tasks.map(task => {
                         return (
-                            <TaskItem key={task.id} 
-                                id={task.id} 
-                                text={task.text} 
-                                isChecked={task.isChecked} 
+                            <TaskItem 
+                                key={task.id}
+                                data={task}
+                                onDeleteTask={deleteTask}
                             />
                         )
                     })

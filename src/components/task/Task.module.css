@@ -2,38 +2,6 @@
     border-radius: 8px;
 }
 
-.taskHeader {
+.taskList {
     padding: 1rem 0;
-}
-
-.infoTask {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 3rem;
-}
-
-.infoTask aside:first-child {
-    color: var(--blue);
-}
-
-.infoTask aside:last-child {
-    color: var(--purple);
-}
-
-.infoTask aside strong {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin-right: 0.3rem;
-}
-
-.infoTask aside span {
-    background: var(--gray-400);
-    color: var(--gray-200);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    border-radius: 16px;
-    font-weight: bold;
-    padding: 0 0.6rem;
 }
