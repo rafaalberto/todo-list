@@ -1,30 +1,40 @@
 import { Check, Trash } from '@phosphor-icons/react'
 
+import { TaskType } from './Task'
 import styles from './TaskItem.module.css'
 
 interface TaskItemProps {
-    id: number
-    text: string
-    isChecked: boolean
+    data: TaskType,
+    onDeleteAction: (id: number) => void
+    onUpdateAction: (id: number, value: boolean) => void
 }
 
-export function TaskItem({ id, text, isChecked } : TaskItemProps) {
+export function TaskItem({ data, onDeleteAction, onUpdateAction }: TaskItemProps) {
+    
+    const checkboxClassName = data.isDone ? styles['checkbox-checked'] : styles['checkbox-unchecked']
+    const paragraphClassName = data.isDone ? styles['paragraph-checked'] : ''
 
-    const checkboxClassName = isChecked ? styles['checkbox-checked'] : styles['checkbox-unchecked']
+    function handleDeleteTask() {
+        onDeleteAction(data.id)
+    }
+
+    function handleUpdateTask() {
+        onUpdateAction(data.id, !data.isDone)
+    }
 
     return (
         <div className={styles.taskItemContent}>
             <div>
-                <label htmlFor={`checkbox_${id}`}>
-                    <input readOnly type="checkbox" id={`checkbox_${id}`} />
+                <label htmlFor={`checkbox_${data.id}`} onClick={handleUpdateTask}>
+                    <input readOnly type="checkbox" checked={data.isDone} />
                     <span className={`${styles.checkbox} ${checkboxClassName}`}>
-                        {isChecked && <Check size={12} />}
-                    </span>    
-                    <p>{text}</p>
-                </label>    
+                        {data.isDone && <Check size={12} />}
+                    </span>
+                    <p className={`styles.paragraph ${paragraphClassName}`}>{data.text}</p>
+                </label>
             </div>
-            <button title="Delete task">
-               <Trash size={20} />
+            <button title="Delete task" onClick={handleDeleteTask}>
+                <Trash size={20} />
             </button>
         </div>
     )

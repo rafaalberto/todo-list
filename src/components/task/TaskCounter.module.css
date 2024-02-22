@@ -1,34 +1,26 @@
-.taskList {
-    border-radius: 8px;
-    margin-top: 2.5rem;
-}
-
-.taskListHeader {
-    padding: 1rem 0;
-}
-
-.infoTask {
+.taskCounter {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: space-between;
+    margin-top: 3rem;
 }
 
-.infoTask aside:first-child {
+.taskCounter aside:first-child {
     color: var(--blue);
 }
 
-.infoTask aside:last-child {
+.taskCounter aside:last-child {
     color: var(--purple);
 }
 
-.infoTask aside strong {
+.taskCounter aside strong {
     font-size: 0.875rem;
     line-height: 1.6;
     margin-right: 0.3rem;
 }
 
-.infoTask aside span {
+.taskCounter aside span {
     background: var(--gray-400);
     color: var(--gray-200);
     font-size: 0.875rem;

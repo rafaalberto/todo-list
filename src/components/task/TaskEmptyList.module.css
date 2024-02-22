@@ -1,4 +1,4 @@
-.emptyTask {
+.emptyList {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,17 +7,17 @@
     padding: 2rem;
 }
 
-.emptyTask img {
+.emptyList img {
     height: 4rem;
     margin: 1rem;
 }
 
-.emptyTask strong {
+.emptyList strong {
     color: var(--gray-300);
     line-height: 1.6;
 }
 
-.emptyTask span {
+.emptyList span {
     color: var(--gray-300);
     line-height: 1.6;
 }
