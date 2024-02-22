@@ -20,7 +20,7 @@ export function Task() {
     const tasksCounter: number = tasks.length
     const checkedTasks: number = tasks.filter(task => (task.isChecked)).length
 
-    function insertNewTask(text: string) {
+    function insertTask(text: string) {
         const newTask: ITask = {
             id: new Date().getTime(),
             text: text,
@@ -36,10 +36,20 @@ export function Task() {
         setTasks(filteredTasks)
     }
 
+    function updateTask(id: number, value: boolean) {
+        const updatedTasks = tasks.map((task) => {
+            if (task.id === id) {
+                return { ...task, isChecked: value }
+            }
+            return task
+        })
+        setTasks(updatedTasks)
+    }
+
     return (
         <article className={styles.task}>
             <InsertTask
-                onInsertTask={insertNewTask}
+                onInsertTask={insertTask}
             />
             <TaskHeader
                 tasksCounter={tasksCounter}
@@ -49,10 +59,11 @@ export function Task() {
                 {tasks.length > 0 ? (
                     tasks.map(task => {
                         return (
-                            <TaskItem 
+                            <TaskItem
                                 key={task.id}
                                 data={task}
                                 onDeleteTask={deleteTask}
+                                onUpdateTask={updateTask}
                             />
                         )
                     })

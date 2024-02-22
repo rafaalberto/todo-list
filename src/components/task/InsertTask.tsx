@@ -14,7 +14,7 @@ export function InsertTask({ onInsertTask }: InsertTaskProps) {
         setInputNewTask(event.target.value)
     }
 
-    function handleInsertNewTask(event: FormEvent) {
+    function handleInsertTask(event: FormEvent) {
         event.preventDefault()
         onInsertTask(inputNewTask)
         setInputNewTask('')
@@ -22,7 +22,7 @@ export function InsertTask({ onInsertTask }: InsertTaskProps) {
 
     return (
         <div>
-            <form className={styles.taskForm} onSubmit={handleInsertNewTask}>
+            <form className={styles.taskForm} onSubmit={handleInsertTask}>
                 <input
                     type="text"
                     name="new-task"
