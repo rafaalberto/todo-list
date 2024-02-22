@@ -1,5 +1,5 @@
 import { PlusCircle } from '@phosphor-icons/react'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
 import styles from './TaskAdd.module.css'
 
 interface TaskAddProps {
@@ -11,6 +11,7 @@ export function TaskAdd({ onInsertAction }: TaskAddProps) {
     const [inputNewTask, setInputNewTask] = useState('')
 
     function handleInputNewTask(event: ChangeEvent<HTMLInputElement>) {
+        event.target.setCustomValidity('')
         setInputNewTask(event.target.value)
     }
 
@@ -18,6 +19,10 @@ export function TaskAdd({ onInsertAction }: TaskAddProps) {
         event.preventDefault()
         onInsertAction(inputNewTask)
         setInputNewTask('')
+    }
+
+    function handleInvalidInput(event: InvalidEvent<HTMLInputElement>) {
+        event.target.setCustomValidity('Esse campo é obrigatório')
     }
 
     return (
@@ -28,7 +33,9 @@ export function TaskAdd({ onInsertAction }: TaskAddProps) {
                     name="new-task"
                     placeholder="Adicione uma nova tarefa"
                     onChange={handleInputNewTask}
+                    onInvalid={handleInvalidInput}
                     value={inputNewTask}
+                    required
                 />
 
                 <footer>
