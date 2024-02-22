@@ -1,7 +1,7 @@
 
-import { EmptyTask } from './EmptyTask'
 import { InsertTask } from './InsertTask'
 import { TaskCounter } from './TaskCounter'
+import { TaskEmptyList } from './TaskEmptyList'
 import { TaskItem } from './TaskItem'
 
 import { useState } from 'react'
@@ -68,7 +68,7 @@ export function Task() {
                         )
                     })
                 ) : (
-                    <EmptyTask />
+                    <TaskEmptyList />
                 )}
             </div>
         </article>
