@@ -1,12 +1,12 @@
 import { PlusCircle } from '@phosphor-icons/react'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import styles from './InsertTask.module.css'
+import styles from './TaskAdd.module.css'
 
-interface InsertTaskProps {
+interface TaskAddProps {
     onInsertAction: (text: string) => void
 }
 
-export function InsertTask({ onInsertAction }: InsertTaskProps) {
+export function TaskAdd({ onInsertAction }: TaskAddProps) {
 
     const [inputNewTask, setInputNewTask] = useState('')
 

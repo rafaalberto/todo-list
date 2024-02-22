@@ -1,5 +1,5 @@
 
-import { InsertTask } from './InsertTask'
+import { TaskAdd } from './TaskAdd'
 import { TaskCounter } from './TaskCounter'
 import { TaskEmptyList } from './TaskEmptyList'
 import { TaskItem } from './TaskItem'
@@ -48,7 +48,7 @@ export function Task() {
 
     return (
         <article className={styles.task}>
-            <InsertTask
+            <TaskAdd
                 onInsertAction={insertTask}
             />
             <TaskCounter
