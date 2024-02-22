@@ -7,7 +7,7 @@ import { TaskItem } from './TaskItem'
 import { useState } from 'react'
 import styles from './Task.module.css'
 
-export interface ITask {
+export interface TaskType {
     id: number,
     text: string,
     isChecked: boolean
@@ -15,25 +15,18 @@ export interface ITask {
 
 export function Task() {
 
-    const [tasks, setTasks] = useState<ITask[]>([])
+    const [tasks, setTasks] = useState<TaskType[]>([])
 
     const tasksCounter: number = tasks.length
     const checkedTasks: number = tasks.filter(task => (task.isChecked)).length
 
     function insertTask(text: string) {
-        const newTask: ITask = {
+        const newTask: TaskType = {
             id: new Date().getTime(),
             text: text,
             isChecked: false
         }
         setTasks((state) => [...state, newTask])
-    }
-
-    function deleteTask(id: number) {
-        const filteredTasks = tasks.filter(task => {
-            return task.id !== id
-        })
-        setTasks(filteredTasks)
     }
 
     function updateTask(id: number, value: boolean) {
@@ -44,6 +37,13 @@ export function Task() {
             return { ...task }
         })
         setTasks(updatedTasks)
+    }
+
+    function deleteTask(id: number) {
+        const filteredTasks = tasks.filter(task => {
+            return task.id !== id
+        })
+        setTasks(filteredTasks)
     }
 
     return (
@@ -62,8 +62,8 @@ export function Task() {
                             <TaskItem
                                 key={task.id}
                                 data={task}
-                                onDeleteTask={deleteTask}
-                                onUpdateTask={updateTask}
+                                onUpdateAction={updateTask}
+                                onDeleteAction={deleteTask}  
                             />
                         )
                     })

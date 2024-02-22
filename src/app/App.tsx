@@ -1,5 +1,5 @@
-import { Header } from './components/Header'
-import { Task } from './components/task/Task'
+import { Header } from '../components/layout/Header'
+import { Task } from '../components/task/Task'
 
 import styles from './App.module.css'
 import './global.css'

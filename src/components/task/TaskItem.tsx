@@ -1,25 +1,25 @@
 import { Check, Trash } from '@phosphor-icons/react'
 
-import { ITask } from './Task'
+import { TaskType } from './Task'
 import styles from './TaskItem.module.css'
 
 interface TaskItemProps {
-    data: ITask,
-    onDeleteTask: (id: number) => void
-    onUpdateTask: (id: number, value: boolean) => void
+    data: TaskType,
+    onDeleteAction: (id: number) => void
+    onUpdateAction: (id: number, value: boolean) => void
 }
 
-export function TaskItem({ data, onDeleteTask, onUpdateTask }: TaskItemProps) {
+export function TaskItem({ data, onDeleteAction, onUpdateAction }: TaskItemProps) {
     
     const checkboxClassName = data.isChecked ? styles['checkbox-checked'] : styles['checkbox-unchecked']
     const paragraphClassName = data.isChecked ? styles['paragraph-checked'] : ''
 
     function handleDeleteTask() {
-        onDeleteTask(data.id)
+        onDeleteAction(data.id)
     }
 
     function handleUpdateTask() {
-        onUpdateTask(data.id, !data.isChecked)
+        onUpdateAction(data.id, !data.isChecked)
     }
 
     return (
