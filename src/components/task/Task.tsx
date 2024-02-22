@@ -41,7 +41,7 @@ export function Task() {
             if (task.id === id) {
                 return { ...task, isChecked: value }
             }
-            return task
+            return { ...task }
         })
         setTasks(updatedTasks)
     }
