@@ -1,7 +1,7 @@
 
 import { EmptyTask } from './EmptyTask'
 import { InsertTask } from './InsertTask'
-import { TaskHeader } from './TaskHeader'
+import { TaskCounter } from './TaskCounter'
 import { TaskItem } from './TaskItem'
 
 import { useState } from 'react'
@@ -10,21 +10,21 @@ import styles from './Task.module.css'
 export interface TaskType {
     id: number,
     text: string,
-    isChecked: boolean
+    isDone: boolean
 }
 
 export function Task() {
 
     const [tasks, setTasks] = useState<TaskType[]>([])
 
-    const tasksCounter: number = tasks.length
-    const checkedTasks: number = tasks.filter(task => (task.isChecked)).length
+    const createdTasks: number = tasks.length
+    const doneTasks: number = tasks.filter(task => (task.isDone)).length
 
     function insertTask(text: string) {
         const newTask: TaskType = {
             id: new Date().getTime(),
             text: text,
-            isChecked: false
+            isDone: false
         }
         setTasks((state) => [...state, newTask])
     }
@@ -32,7 +32,7 @@ export function Task() {
     function updateTask(id: number, value: boolean) {
         const updatedTasks = tasks.map((task) => {
             if (task.id === id) {
-                return { ...task, isChecked: value }
+                return { ...task, isDone: value }
             }
             return { ...task }
         })
@@ -49,11 +49,11 @@ export function Task() {
     return (
         <article className={styles.task}>
             <InsertTask
-                onInsertTask={insertTask}
+                onInsertAction={insertTask}
             />
-            <TaskHeader
-                tasksCounter={tasksCounter}
-                checkedTasks={checkedTasks}
+            <TaskCounter
+                createdTasks={createdTasks}
+                doneTasks={doneTasks}
             />
             <div className={styles.taskList}>
                 {tasks.length > 0 ? (
@@ -63,7 +63,7 @@ export function Task() {
                                 key={task.id}
                                 data={task}
                                 onUpdateAction={updateTask}
-                                onDeleteAction={deleteTask}  
+                                onDeleteAction={deleteTask}
                             />
                         )
                     })

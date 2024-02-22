@@ -3,20 +3,20 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import styles from './InsertTask.module.css'
 
 interface InsertTaskProps {
-    onInsertTask: (text: string) => void
+    onInsertAction: (text: string) => void
 }
 
-export function InsertTask({ onInsertTask }: InsertTaskProps) {
+export function InsertTask({ onInsertAction }: InsertTaskProps) {
 
     const [inputNewTask, setInputNewTask] = useState('')
 
-    function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
+    function handleInputNewTask(event: ChangeEvent<HTMLInputElement>) {
         setInputNewTask(event.target.value)
     }
 
     function handleInsertTask(event: FormEvent) {
         event.preventDefault()
-        onInsertTask(inputNewTask)
+        onInsertAction(inputNewTask)
         setInputNewTask('')
     }
 
@@ -27,7 +27,7 @@ export function InsertTask({ onInsertTask }: InsertTaskProps) {
                     type="text"
                     name="new-task"
                     placeholder="Adicione uma nova tarefa"
-                    onChange={handleNewTask}
+                    onChange={handleInputNewTask}
                     value={inputNewTask}
                 />
 
